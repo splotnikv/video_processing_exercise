@@ -1,2 +1,1 @@
-# video_processing_exercise
-video processing software engineering exercise
+This repository contains task and solutions for video processing software engineering exercise. It demonstrates how to use different video processing techniques, like motion estimation, scaling and so on.
