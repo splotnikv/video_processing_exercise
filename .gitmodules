@@ -1,0 +1,3 @@
+[submodule "vshampor/deshuffler/unit_tests/googletest"]
+	path = vshampor/deshuffler/unit_tests/googletest
+	url = https://github.com/google/googletest.git
