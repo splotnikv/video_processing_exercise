@@ -6,14 +6,7 @@ include_directories(googletest/googlemock/include)
 
 add_executable(unit_tests 
 	src/deshuffler_test.cpp
-	src/yuv_reader_seek_test.cpp)
+	src/yuv_reader_seek_i420_test.cpp)
 add_dependencies(unit_tests deshuffler gtest_main)
 target_link_libraries(unit_tests deshuffler gtest_main)
 
-add_custom_command(
-    POST_BUILD
-    TARGET unit_tests
-    COMMAND unit_tests
-    WORKING_DIRECTORY bin/
-    COMMENT "Running unit tests..."
-)

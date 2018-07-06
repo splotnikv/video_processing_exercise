@@ -14,5 +14,6 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 lib/*
+sample_common/lib/*
 *.pc
 /build/
