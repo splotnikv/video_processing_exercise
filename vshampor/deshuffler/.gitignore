@@ -17,3 +17,4 @@ lib/*
 sample_common/lib/*
 *.pc
 /build/
+*.lib

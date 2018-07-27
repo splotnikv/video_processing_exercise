@@ -4,6 +4,7 @@
 #include "permutation_data.h"
 #include "input_params.h"
 #include "yuv_reader_seek_i420.h"
+#include "permut_calc_task.h"
 #include <sample_utils.h>
 
 class Deshuffler
@@ -16,9 +17,10 @@ public:
     void ReconstructStream();
     void OutputStream();
 private:
+    std::vector<PermutCalcTask> GeneratePermutCalcTasks();
+    mfxStatus CalculatePermutCalcTask(PermutCalcTask& task);
     InputParams m_params;
     PermutationData m_permutation_data;
-    YUVReaderSeekI420 m_YUVReader;
     CSmplYUVWriter m_YUVWriter;
 };
 

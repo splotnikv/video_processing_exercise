@@ -8,11 +8,11 @@
 #include "yuv_reader_seek_i420.h"
 #include <list>
 
-mfxStatus YUVReaderSeekI420::Init(std::string filename, mfxU32 width, mfxU32 height)
+mfxStatus YUVReaderSeekI420::Init(const StreamInfo& stream_info)
 {
-    m_width = width;
-    m_height = height;
-    std::list<msdk_string> input(1, filename);
+    m_width = stream_info.width;
+    m_height = stream_info.height;
+    std::list<msdk_string> input(1, stream_info.filename);
     return CSmplYUVReader::Init(input, MFX_FOURCC_I420);
 }
 

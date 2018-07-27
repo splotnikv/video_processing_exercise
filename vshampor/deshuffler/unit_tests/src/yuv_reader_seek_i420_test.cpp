@@ -17,31 +17,31 @@
 TEST(YUVReaderSeekTest, ShouldOpenI420YUVFile)
 {
     YUVReaderSeekI420 yuv_reader_seek;
-    std::string stream_filename("/msdk/MEDIASDK_STREAMS/YUV/foreman_352x288_300.yuv");
+    StreamInfo stream = {"/msdk/MEDIASDK_STREAMS/YUV/foreman_352x288_300.yuv", 352, 288, 300};
     struct stat buffer;
-    if (stat(stream_filename.c_str(), &buffer) != 0)
+    if (stat(stream.filename.c_str(), &buffer) != 0)
     {
-        std::cout << "Stream " << stream_filename << " not found, which is required for this test case to pass\n";
+        std::cout << "Stream " << stream.filename << " not found, which is required for this test case to pass\n";
         FAIL();
     }
 
-    ASSERT_EQ(MFX_ERR_NONE, yuv_reader_seek.Init(stream_filename, 352, 288));
+    ASSERT_EQ(MFX_ERR_NONE, yuv_reader_seek.Init(stream));
 }
 
 TEST(YUVReaderSeekTest, ShouldSeekInOpenFile)
 {
     YUVReaderSeekI420 yuv_reader_seek;
-    std::string stream_filename("/msdk/MEDIASDK_STREAMS/YUV/foreman_352x288_300.yuv");
+    StreamInfo stream = {"/msdk/MEDIASDK_STREAMS/YUV/foreman_352x288_300.yuv", 352, 288, 300};
     struct stat buffer;
-    if (stat(stream_filename.c_str(), &buffer) != 0)
+    if (stat(stream.filename.c_str(), &buffer) != 0)
     {
-        std::cout << "Stream " << stream_filename << " not found, which is required for this test case to pass\n";
+        std::cout << "Stream " << stream.filename << " not found, which is required for this test case to pass\n";
         FAIL();
     }
 
     CSmplYUVReader yuv_reader_ref;
-    std::list<msdk_string> input(1, stream_filename);
-    ASSERT_EQ(MFX_ERR_NONE, yuv_reader_seek.Init(stream_filename, 352, 288));
+    std::list<msdk_string> input(1, stream.filename);
+    ASSERT_EQ(MFX_ERR_NONE, yuv_reader_seek.Init(stream));
     ASSERT_EQ(MFX_ERR_NONE, yuv_reader_ref.Init(input, MFX_FOURCC_I420));
     mfxU32 seek_frame_num = 5;
 

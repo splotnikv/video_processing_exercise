@@ -31,8 +31,7 @@ add_executable(deshuffler_cl src/main.cpp)
 add_dependencies(deshuffler_cl deshuffler)
 target_link_libraries(deshuffler_cl deshuffler)
 
-add_custom_command(
-    POST_BUILD
-    TARGET deshuffler_cl
+add_custom_target(run_tests ALL
+    DEPENDS deshuffler
     COMMAND unit_tests
     WORKING_DIRECTORY unit_tests/bin/)
